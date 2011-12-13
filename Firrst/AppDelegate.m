@@ -28,6 +28,20 @@
     return YES;
 }
 
+//handle firrst:// links
+- (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url 
+{
+    if (!url) {  return NO; }
+    
+
+    NSString *URLString = [url absoluteString];
+    //[[NSUserDefaults standardUserDefaults] setObject:URLString forKey:@"url"];
+    //[[NSUserDefaults standardUserDefaults] synchronize];
+    self.mainViewController.longURL.text = [URLString substringFromIndex:9];
+    return YES;
+}
+
+
 - (void)applicationWillResignActive:(UIApplication *)application
 {
     /*

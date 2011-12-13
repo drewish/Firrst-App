@@ -10,6 +10,6 @@ I essentially built the rudimentary longLink text field/shortlink label UI.  I t
 Firr.st expects to get RESTful POSTs, not the bit.ly-esk GET requests, so I went ahead and rejigged that code to do, what I believe should work (approximately), as a proper POST for the service.  I moved over the "AppModel.*" files from our the Bit.ly project, which contains most of the service logic.  I will quickly rename these to be FirrstLink.* because I think that makes more sense.  This looks mostly good, but rails has that built in csrf-token B.S. so you actually have to get an authtoken from the site before you POST up into it.  I could just disable it, but that's there for a reason, so I should probably hack in a quick API key check, even if it's just hardcoded.  This is blowing my mind, but I think that might really be all we have to do to have at least Bit.ly level functionality out of this.  That being said, running this will make it green bar of SIGdeath, which is entirely unhelpful.  But that's probably just because this bit.ly code never had error handling anyways.
 
 TODO    
-    firrst: protocol
+    DONE firrst: protocol
     bookmarklet
     clipboard interaction
