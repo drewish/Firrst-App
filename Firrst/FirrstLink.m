@@ -1,10 +1,10 @@
-#import "AppModel.h"
+#import "FirrstLink.h"
 
-@implementation AppModel
+@implementation FirrstLink
 
 @synthesize xmlParser, dataString, currentElement;
 
-static AppModel *sharedObject = nil;
+static FirrstLink *sharedObject = nil;
 
 +(id)sharedModel {
     @synchronized(self) {
@@ -42,6 +42,7 @@ static AppModel *sharedObject = nil;
 -(NSString *) makeThisURLShort:(NSString *)longURL{
     self.dataString =nil;
     //TODO figure out how to do plist files
+    //TODO RestKit?
     //NSString *APILogin = @"HavingEveryonebeanonymous";
     //NSString *APIKey = @"AndrewWeShouldProbablyHaveAPIKeys";
     

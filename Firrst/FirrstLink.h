@@ -1,11 +1,7 @@
-
-//  Singleton with Core Data stack header
-//  AppModel.h
-
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 
-@interface AppModel : NSObject<NSXMLParserDelegate>
+@interface FirrstLink: NSObject<NSXMLParserDelegate>
 
 +(id)sharedModel;
 

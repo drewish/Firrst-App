@@ -8,7 +8,7 @@
 
 #import "FlipsideViewController.h"
 #import <CoreData/CoreData.h>
-#import "AppModel.h"
+#import "FirrstLink.h"
 
 @interface MainViewController : UIViewController <FlipsideViewControllerDelegate, UITextFieldDelegate>
 

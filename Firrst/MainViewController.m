@@ -25,7 +25,7 @@
 -(void)retreiveAndUpdateShortLink{
     //Hit service
     //Update self.shortLink
-    self.shortLink.text = [[AppModel sharedModel] makeThisURLShort:self.longURL.text];
+    self.shortLink.text = [[FirrstLink sharedModel] makeThisURLShort:self.longURL.text];
 }
 
 
