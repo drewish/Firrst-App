@@ -25,18 +25,32 @@ static FirrstLink *sharedObject = nil;
 
 -(void)parser:(NSXMLParser *)parser didStartElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName attributes:(NSDictionary *)attributeDict{
     self.currentElement = [elementName copy];
-    if([elementName isEqualToString:@"shash"]){
+    if([elementName isEqualToString:@"shortUrl"]){  //TODO update for firr.st 'shash'
         self.dataString = [[NSMutableString alloc] init];
     }
 }
 
 -(void)parser:(NSXMLParser *)parser foundCharacters:(NSString *)string{
-    if([self.currentElement isEqualToString:@"shash"])
+    if([self.currentElement isEqualToString:@"shortUrl"])  //TODO shash
         [self.dataString appendString:string];
 }
 
 -(void)parser:(NSXMLParser *)parser didEndElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName{
     
+}
+
+-(NSString *) makeThisURLShortWithBitly:(NSString *)longURL{
+    self.dataString =nil;
+    NSString *APILogin = @"rovertus";
+    NSString *APIKey = @"R_7ee14f1ff14f0d733843f12af494bacd";
+    NSString *requestString = [[NSString alloc] initWithFormat:@"http://api.bit.ly/shorten?version=2.0.1&longUrl=%@&login=%@&apiKey=%@&format=xml",longURL,APILogin,APIKey];
+    NSURL *xmlURL = [NSURL URLWithString:requestString];
+    
+    self.xmlParser = [[NSXMLParser alloc] initWithContentsOfURL:xmlURL];
+    self.xmlParser.delegate = self;
+    [self.xmlParser parse];
+    
+    return [NSString stringWithString:dataString];
 }
 
 -(NSString *) makeThisURLShort:(NSString *)longURL{

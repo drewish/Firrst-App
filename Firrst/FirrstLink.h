@@ -9,5 +9,6 @@
 @property(strong) NSMutableString *dataString;
 @property(strong) NSString *currentElement;
 
+-(NSString *) makeThisURLShortWithBitly:(NSString *)longURL;
 -(NSString *) makeThisURLShort:(NSString *)longURL;
 @end
