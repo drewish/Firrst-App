@@ -26,6 +26,7 @@
 		D96A3DA31496E3AF00756107 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D96A3DA11496E3AF00756107 /* InfoPlist.strings */; };
 		D96A3DA61496E3AF00756107 /* FirrstTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D96A3DA51496E3AF00756107 /* FirrstTests.m */; };
 		D96A3DB91496F06200756107 /* AppModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D96A3DB81496F06200756107 /* AppModel.m */; };
+		D96A3DBB1496F99200756107 /* README in Resources */ = {isa = PBXBuildFile; fileRef = D96A3DBA1496F99200756107 /* README */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,8 +64,9 @@
 		D96A3DA21496E3AF00756107 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		D96A3DA41496E3AF00756107 /* FirrstTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FirrstTests.h; sourceTree = "<group>"; };
 		D96A3DA51496E3AF00756107 /* FirrstTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FirrstTests.m; sourceTree = "<group>"; };
-		D96A3DB71496F06200756107 /* AppModel.h */ = {isa = PBXFileReference; fileEncoding = 4; path = AppModel.h; sourceTree = "<group>"; };
+		D96A3DB71496F06200756107 /* AppModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppModel.h; sourceTree = "<group>"; };
 		D96A3DB81496F06200756107 /* AppModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppModel.m; sourceTree = "<group>"; };
+		D96A3DBA1496F99200756107 /* README */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -150,6 +152,7 @@
 				D96A3D791496E3AF00756107 /* InfoPlist.strings */,
 				D96A3D7C1496E3AF00756107 /* main.m */,
 				D96A3D7E1496E3AF00756107 /* Firrst-Prefix.pch */,
+				D96A3DBA1496F99200756107 /* README */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -247,6 +250,7 @@
 				D96A3D7B1496E3AF00756107 /* InfoPlist.strings in Resources */,
 				D96A3D8D1496E3AF00756107 /* MainViewController.xib in Resources */,
 				D96A3D901496E3AF00756107 /* FlipsideViewController.xib in Resources */,
+				D96A3DBB1496F99200756107 /* README in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -46,7 +46,7 @@ static AppModel *sharedObject = nil;
     //NSString *APIKey = @"AndrewWeShouldProbablyHaveAPIKeys";
     
     //POST payload
-    const char *data = [[NSString stringWithFormat: longURL] UTF8String];
+    const char *data = [[NSString stringWithFormat: @"link[url]=%@",longURL] UTF8String];
     
     NSURL *xmlURL = [NSURL URLWithString: @"http://firr.st/links.xml"];
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:xmlURL];
