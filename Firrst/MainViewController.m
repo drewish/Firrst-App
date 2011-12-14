@@ -10,6 +10,7 @@
 
 @implementation MainViewController
 @synthesize longURL = _longURL;
+@synthesize shortTextView = _shortTextView;
 @synthesize shortLink = _shortLink;
 
 @synthesize managedObjectContext = _managedObjectContext;
@@ -52,6 +53,7 @@
 - (void)viewDidUnload
 {
     [self setShortLink:nil];
+    [self setShortTextView:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;

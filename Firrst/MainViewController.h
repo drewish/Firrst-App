@@ -13,10 +13,11 @@
 @interface MainViewController : UIViewController <FlipsideViewControllerDelegate, UITextFieldDelegate>
 
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
+@property (weak, nonatomic) IBOutlet UITextField *longURL;
+@property (weak, nonatomic) IBOutlet UITextView *shortTextView;
 @property (weak, nonatomic) IBOutlet UILabel *shortLink;
 
 - (IBAction)showInfo:(id)sender;
-@property (weak, nonatomic) IBOutlet UITextField *longURL;
 
 -(void) retreiveAndUpdateShortLink;
 
