@@ -15,21 +15,19 @@
 
 @synthesize managedObjectContext = _managedObjectContext;
 
-
--(BOOL)textFieldShouldReturn:(UITextField *)textField{
-    [self retreiveAndUpdateShortLink];
+-(BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    NSURL *url = [FirrstLink validateURL: textField.text];
+    if (url == nil) {
+        return NO;
+    }
     [textField resignFirstResponder];
-    
+    [FirrstLink shortenURLAsynchronous:url onComplete:^(NSString *shortUrl) {
+        self.shortTextView.text = shortUrl;
+        self.shortLink.text = shortUrl;
+    }];
     return YES;
 }
-
--(void)retreiveAndUpdateShortLink{
-    //Hit service
-    //Update self.shortLink
-    self.shortLink.text = [[FirrstLink sharedModel] makeThisURLShortWithBitly:self.longURL.text];
-}
-
-
 
 /*******************
  * Boiler Plate

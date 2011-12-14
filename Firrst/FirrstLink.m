@@ -39,6 +39,53 @@ static FirrstLink *sharedObject = nil;
     
 }
 
+// TODO: this it probably too liberal
++(NSURL*)validateURL:(NSString*)possibleURL
+{
+    if ([possibleURL length] == 0) {
+        return nil;
+    }
+    
+    NSURL *url = [NSURL URLWithString: possibleURL];
+    // Make sure it's considered valid and has a scheme.
+    if (url == nil) {
+        return nil;
+    }
+    
+    // Make sure the URL has a scheme e.g. google.com => http://google.com
+    if ([url.scheme length] == 0) {
+        NSLog(@"URL is missing a scheme adding http adding %@", [NSString stringWithFormat: @"http://%s", url.absoluteURL]);
+        url = [NSURL URLWithString: [NSString stringWithFormat: @"http://%@", url.absoluteURL]];
+    }
+    return url;
+}
+
++(void)shortenURLAsynchronous:(NSURL*)inputURL onComplete:(void (^)(NSString*))handler
+{
+    NSString *longURL = [inputURL absoluteString];
+    NSString *APILogin = @"rovertus";
+    NSString *APIKey = @"R_7ee14f1ff14f0d733843f12af494bacd";
+    NSString *requestURL = [[NSString alloc] initWithFormat:@"http://api.bit.ly/shorten?version=2.0.1&longUrl=%@&login=%@&apiKey=%@&format=json", longURL, APILogin, APIKey];
+    
+    // Build a block for parsing the URL from the JSON and then handing that
+    // to their handler.
+    void (^complete)(NSURLResponse*, NSData*, NSError*) = ^(NSURLResponse *r, NSData *d, NSError *e) {
+        // TODO this really needs error checking... or probably just be done
+        // via regex.
+        id result = [NSJSONSerialization JSONObjectWithData:d 
+                                                    options:NSJSONReadingMutableContainers 
+                                                      error:nil];
+        NSLog(@"Response %@", result);
+        NSString *shortURL = [[[result objectForKey: @"results"] objectForKey: longURL] objectForKey: @"shortUrl"];
+        handler(shortURL);
+    };
+    NSURLRequest *req = [[NSURLRequest alloc] initWithURL:[NSURL URLWithString:requestURL]];
+    [NSURLConnection sendAsynchronousRequest:req
+                                       queue:[NSOperationQueue mainQueue]
+                           completionHandler:complete];
+    
+}
+
 -(NSString *) makeThisURLShortWithBitly:(NSString *)longURL{
     self.dataString =nil;
     NSString *APILogin = @"rovertus";

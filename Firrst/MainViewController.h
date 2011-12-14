@@ -19,6 +19,4 @@
 
 - (IBAction)showInfo:(id)sender;
 
--(void) retreiveAndUpdateShortLink;
-
 @end
