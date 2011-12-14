@@ -90,6 +90,11 @@
     [self dismissModalViewControllerAnimated:YES];
 }
 
+// Allow them to exit the text box by touching off the keyboard.
+-(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+    [self.longURL resignFirstResponder];
+}
+
 - (IBAction)showInfo:(id)sender
 {    
     FlipsideViewController *controller = [[FlipsideViewController alloc] initWithNibName:@"FlipsideViewController" bundle:nil];
