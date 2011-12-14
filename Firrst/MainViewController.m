@@ -29,6 +29,30 @@
     return YES;
 }
 
+// TODO: This should probably provide some animation to make it clear that
+// the text field was filled from the clipboard. Might be bad having it done
+// automagically.
+-(void)checkPasteboardForLinks
+{
+    UIPasteboard *p = [UIPasteboard generalPasteboard];
+    // Check for URLs then strings.
+    if ([p containsPasteboardTypes:[NSArray arrayWithObjects:@"public.url", @"public.text", nil] 
+                         inItemSet:nil]) {
+        if ([p.URLs count] > 0) {
+            self.longURL.text = [p.URLs objectAtIndex:0];
+        }
+        // TODO we need to use something stricter than validateURL here because
+        // it's too liberal so any text gets added. If they want something 
+        // wacky they should have to manually paste it.
+        else if ([p.strings count] > 0 && [FirrstLink validateURL: [p.strings objectAtIndex:0]] != nil) {
+            self.longURL.text = [p.strings objectAtIndex:0];
+        }
+    }
+    else {
+        NSLog(@"Pasteboard contained only:\n%@", [p pasteboardTypesForItemSet:nil]);
+    }
+}
+
 /*******************
  * Boiler Plate
  *******************/
@@ -65,6 +89,7 @@
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
+    [self checkPasteboardForLinks];
 }
 
 - (void)viewWillDisappear:(BOOL)animated

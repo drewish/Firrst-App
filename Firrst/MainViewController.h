@@ -19,4 +19,6 @@
 
 - (IBAction)showInfo:(id)sender;
 
+- (void)checkPasteboardForLinks;
+
 @end
